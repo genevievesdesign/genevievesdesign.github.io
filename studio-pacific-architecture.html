@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Studio Pacific Architecture — genevieves.design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --text:#ffffff;
+  --accent:hsl(43,63%,62%);
+  --muted:rgba(255,255,255,0.72);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* LOGO */
+.logo{
+position:fixed;
+top:30px;
+right:30px;
+height:36px;
+opacity:0.7;
+}
+
+.logo:hover{
+opacity:1;
+}
+
+.logo{
+cursor:pointer;
+}
+
+/* BACK */
+.back{
+  position:fixed;
+  top:30px;
+  left:30px; 
+
+  font-size:12px;
+  padding:4px 8px;
+
+  color:var(--text);
+  text-decoration:none;
+  opacity:0.7;
+
+  background:rgba(10,10,10,0.5);
+  backdrop-filter:blur(6px);
+  border-radius:3px;
+}
+
+.back:visited{
+  color:var(--text);
+}
+
+.back:hover{
+  opacity:1;
+  color:var(--accent);
+}
+
+/* CONTAINER */
+.container{
+max-width:1200px;
+margin:auto;
+padding:110px 20px 40px;
+}
+
+
+/* HERO */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(70px,8vw,130px);
+  line-height:0.95;
+  margin-top:80px;
+  margin-bottom:40px;
+  letter-spacing:-1px;
+}
+
+.tagline{
+  font-size:18px;
+  line-height:1.6;
+  max-width:600px;
+  margin-bottom:28px;
+  color:var(--text);
+}
+
+.category-label{
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.project-meta{
+  margin-bottom:60px;
+}
+
+.project-meta p{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--text);
+}
+
+.project-meta span{
+  color:var(--accent);
+  font-weight:500;
+  margin-right:6px;
+}
+
+/* META */
+.meta{
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:80px;
+}
+
+/* LAYOUT */
+.layout{
+  display:grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap:110px;
+  align-items:start;
+  margin-top:20px; 
+}
+
+/* IMAGES */
+.image-header{
+  margin-bottom:20px; 
+}
+
+.image-header,
+.text h2:first-of-type{
+  margin-top:0;
+}
+
+.category-label{
+  margin-bottom:0;
+}
+
+.images{
+  display:flex;
+  flex-direction:column;
+  gap:60px;
+  margin-top:0; 
+}
+
+.images img{
+  width:100%;
+  display:block;
+}
+
+/* TEXT */
+.text{
+position: sticky;
+top: 40px;
+align-self: start;
+}
+
+/* HEADINGS */
+.text h2{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-top:30px;
+  margin-bottom:10px;
+}
+
+.text h2:first-of-type{
+margin-top:20px;
+}
+
+/* BODY */
+.text p{
+  font-size:15px;
+  line-height:1.85;
+  color:var(--muted);
+  margin-bottom:16px;
+  max-width:460px;
+}
+
+/* OTHER */
+.kicker{
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px; 
+}
+
+.project-nav a{
+  color:var(--accent);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  opacity:0.7;
+}
+
+.project-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:100%;
+}
+
+.project-nav a:hover{
+opacity:1;
+}
+
+.project-end{
+margin-top:120px;
+}
+
+/* FOOTER */
+.site-footer{
+max-width:1200px;
+margin:80px auto 40px;
+padding:0 20px;
+
+font-family:'Inter',sans-serif;
+font-size:11px;
+letter-spacing:1.5px;
+text-transform:uppercase;
+
+color:rgba(255,255,255,0.4);
+text-align:left;
+}
+
+.text a,
+.text a:visited {
+color: var(--accent);
+text-decoration: none;
+}
+
+.text a:hover {
+opacity: 0.8;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .container{
+    padding:120px 20px;
+  }
+
+  .back{
+    left:20px;
+    top:20px;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .text{
+    position:relative;
+    top:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a href="../index.html" class="back">← Work</a>
+
+<div class="container">
+
+<a href="../index.html">
+<img src="../logo.svg" class="logo">
+</a>
+
+<div class="kicker">Brand Identity / Print & Digital / Campaign</div>
+
+  <h1>Studio Pacific Study</h1>
+
+<p class="tagline">
+  A research-led publication interpreting the design values of Studio Pacific Architecture through editorial design, typography, and material exploration.
+</p>
+
+<div class="project-meta">
+  <p><span>Role:</span> Editorial Design, Research, Typography</p>
+  <p><span>Format:</span> Independent publication (research project)</p>
+  <p><span>Outcome:</span> Speculative interpretation of Studio Pacific Architecture</p>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <div class="images">
+
+    <img src="studiopacificarchitecture1.jpeg">
+    <img src="studiopacificarchitecture2.jpeg">
+    <img src="studiopacificarchitecture3.jpeg">
+
+    <div class="project-nav">
+      <a href="previous.html">← Previous</a>
+      <a href="../index.html">genevieves.design</a>
+      <a href="next.html">Next →</a>
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="text">
+
+      <h2>Overview</h2>
+<p>This publication is a research-led response to Studio Pacific Architecture, developed through visual and contextual study of their practice, office environment, and built work in Wellington. The project was not commissioned or used by the practice, but instead formed as an independent design&nbsp;exploration.
+</p>
+
+<p>
+The design draws on key themes identified through research, including Pacific influence, structure, simplicity, and an emphasis on natural and environmentally conscious design&nbsp;approaches.
+</p>
+
+      <h2>Context</h2>
+<p>Studio Pacific Architecture is a Wellington-based architecture practice known for its considered, context-driven approach to design. This project was developed after visiting their studio and observing their built and working environments, forming the basis for a visual interpretation of their design&nbsp;philosophy.
+</p>
+
+      <h2>Approach</h2>
+<p>The publication translates key research themes into a cohesive visual system. A muted green-blue palette references Pacific and environmental qualities, while organic forms are used to reflect natural structure and&nbsp;flow.
+</p>
+
+<p>
+Material and typographic decisions reinforce these ideas, including eco-conscious paper stock, embossing for tactility, and a combination of Garamond and Ubuntu for clarity, legibility, and contrast between structured and natural&nbsp;qualities.
+</p>
+
+      <h2>Outcome</h2>
+<p>The result is an exploratory publication that interprets the design values of Studio Pacific Architecture through typography, material, and layout. It functions as a speculative study rather than a commissioned identity, translating architectural principles into editorial&nbsp;form.
+</p>
+
+<p style="margin-top:30px; color:var(--accent);">
+  Interested in working together? Contact me at <a href="mailto:hello.genevieves.design@gmail.com">
+hello.genevieves.design@gmail.com
+</a>
+</p>
+
+</div> 
+
+</div> 
+
+<!-- GLOBAL FOOTER -->
+<footer class="site-footer">© genevieves.design</footer>
+
+<script src="projects-nav.js"></script>
+
+</body>
+</html>
