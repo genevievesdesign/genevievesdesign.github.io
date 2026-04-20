@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>genevieves.design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0a0a0a;
+  --text:#ffffff;
+  --accent:hsl(43,63%,62%);
+  --section-bg:rgba(255,255,255,0.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  padding:25px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(10,10,10,0.75);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+  transition:padding .3s ease;
+}
+
+nav img{height:52px;}
+
+nav a{
+  margin-left:30px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:14px;
+  opacity:.7;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:var(--accent);
+  opacity:1;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:140px 20px 40px;
+}
+
+/* TYPE */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(64px,10vw,120px);
+  line-height:1.02;
+  letter-spacing:-1px;
+  color:var(--text);
+}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+h3{
+  font-size:14px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+
+p{
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* HERO */
+.hero{
+  min-height: 70vh;
+  height: auto;
+  padding: 120px 0 60px;
+}
+
+.hero p{
+  margin-top:36px;
+  max-width:650px;
+  color:var(--accent);
+}
+
+/* SECTIONS */
+.section{
+  margin-top:100px;
+  opacity:0;
+  transform:translateY(60px);
+  transition:.8s;
+  scroll-margin-top: 100px;
+}
+
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* CAROUSEL */
+.carousel{
+  overflow:hidden;
+  cursor:grab;
+  user-select:none;
+  margin-bottom:60px;
+}
+
+.carousel a {
+color: inherit;
+text-decoration: none;
+}
+
+.track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+}
+
+.item{
+  position:relative;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.item img{
+  height:320px;
+  width:420px;
+  object-fit:cover;
+  display:block;
+  transition:transform .4s ease, opacity .4s ease;
+}
+
+.item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.2);
+  transition:.4s;
+  z-index:1;
+}
+
+.item:hover::after{
+  background:rgba(0,0,0,0.35);
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:20px;
+  background:linear-gradient(to top, rgba(0,0,0,0.75), transparent 60%);
+  opacity:0;
+  transition:opacity .4s ease;
+  z-index:2;
+}
+
+.overlay h4{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  margin-bottom:5px;
+}
+
+.overlay p{
+  font-size:14px;
+  opacity:.8;
+}
+
+.item:hover .overlay{
+  opacity:1;
+}
+
+.item:hover img{
+  transform:scale(1.05);
+}
+
+.carousel-wrapper{
+  position:relative;
+  margin-bottom:60px;
+}
+
+.carousel{
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  display:block;
+  scrollbar-width:none;
+}
+
+.carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.8); /* opaque black */
+  border: none;
+  border-radius: 6px; /* slightly rounded corners */
+  color: #fff; /* arrow color */
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 1); /* fully black on hover */
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:60px;
+}
+
+.service{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* GET IN TOUCH */
+.get-in-touch{
+  display:flex;
+  gap:40px;
+  background:var(--section-bg);
+  padding:40px;
+  border-radius:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.get-in-touch-photo{
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  object-fit:cover;
+  flex-shrink:0;
+  order:2; /* photo on right */
+}
+
+.get-in-touch-text{
+  flex:1;
+  max-width:1000px;
+}
+
+.get-in-touch-text h2{
+  margin-bottom:25px;
+}
+
+.get-in-touch-text p{
+  margin-bottom:20px;
+  line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+  margin-top:120px;
+  opacity:.4;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:20px;}
+  h1{font-size:48px;}
+  .hero{height:auto;padding-top:60px;}
+  .carousel img{width:280px;height:200px;}
+  .get-in-touch{
+    flex-direction:column;
+    text-align:center;
+  }
+  .get-in-touch-photo{
+    margin-bottom:20px;
+    width:160px;
+    height:160px;
+    order:0; /* reset for mobile */
+  }
+  .get-in-touch-text{max-width:100%;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <img src="logo.svg" alt="Logo">
+  <div>
+    <a href="#work">Work</a>
+    <a href="#about">Get in Touch</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section class="hero">
+  <div>
+    <h1>Design that makes people pause.</h1>
+    <p>
+      Clear, considered design helping brands communicate across publications, campaigns, and digital&nbsp;platforms.
+    </p>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <h2>Work</h2>
+
+<!-- Carousel -->
+<div class="carousel-wrapper">
+
+  <button class="arrow left" onclick="scrollCarousel(-1)">←</button>
+
+  <div class="carousel" id="carousel">
+
+    <div class="track">
+
+      <a class="item" href="against-the-current.html">
+        <img src="work1.jpeg">
+        <div class="overlay">
+          <h4>Against the Current</h4>
+          <p>A typographic statement highlighting the degradation of the Selwyn River...</p>
+        </div>
+      </a>
+
+      <a class="item" href="clark-coastals.html">
+        <img src="work2.jpeg">
+        <div class="overlay">
+          <h4>Clark Coastals Hardcover</h4>
+          <p>Clark Coastals — a premium villa hardcover project featuring embossed latitude lines and gold accents...</p>
+        </div>
+      </a>
+
+      <a class="item" href="pyper-vision.html">
+        <img src="work3.jpeg">
+        <div class="overlay">
+          <h4>Pyper Vision</h4>
+          <p>A bold, trustworthy blue refresh bringing clarity and innovation to their website...</p>
+        </div>
+      </a>
+
+      <a class="item" href="fad-publication.html">
+        <img src="work4.jpeg">
+        <div class="overlay">
+          <h4>FAD Publication</h4>
+          <p>A typographic exploration of Victorian lingerie and societal ideals...</p>
+        </div>
+      </a>
+
+      <a class="item" href="diversity-inclusion.html">
+        <img src="work5.jpeg">
+        <div class="overlay">
+          <h4>Diversity & Inclusion</h4>
+          <p>An internal campaign for Summerset celebrating inclusiveness and diversity...</p>
+        </div>
+      </a>
+
+      <a class="item" href="summerset-signage.html">
+        <img src="work6.jpeg">
+        <div class="overlay">
+          <h4>Summerset Signage</h4>
+          <p>Outdoor and print materials promoting Summerset homes and villages...</p>
+        </div>
+      </a>
+
+      <a class="item" href="clark-coastals.html">
+        <img src="work7.jpeg">
+        <div class="overlay">
+          <h4>Clark Coastals</h4>
+          <p>Magazine advertisement showcasing the Summerset Clark Coastal villas...</p>
+        </div>
+      </a>
+
+      <a class="item" href="against-the-current.html">
+        <img src="work8.jpeg">
+        <div class="overlay">
+          <h4>Against the Current</h4>
+          <p>A typographic statement highlighting the degradation of the Selwyn River...</p>
+        </div>
+      </a>
+
+      <a class="item" href="fad-publication.html">
+        <img src="work9.jpeg">
+        <div class="overlay">
+          <h4>FAD Publication</h4>
+          <p>A typographic exploration of Victorian lingerie and societal ideals...</p>
+        </div>
+      </a>
+
+      <a class="item" href="diversity-inclusion.html">
+        <img src="work10.jpeg">
+        <div class="overlay">
+          <h4>Diversity & Inclusion</h4>
+          <p>An internal campaign for Summerset celebrating inclusiveness and diversity...</p>
+        </div>
+      </a>
+
+      <a class="item" href="clark-coastals.html">
+        <img src="work11.jpeg">
+        <div class="overlay">
+          <h4>Clark Coastals</h4>
+          <p>Website page showcasing the Summerset Clark Coastal villas...</p>
+        </div>
+      </a>
+
+      <a class="item" href="pyper-vision.html">
+        <img src="work12.jpeg">
+        <div class="overlay">
+          <h4>Pyper Vision</h4>
+          <p>Business card showcasing the redesigned logo and refreshed colours...</p>
+        </div>
+      </a>
+
+      <a class="item" href="fad-publication.html">
+        <img src="work13.jpeg">
+        <div class="overlay">
+          <h4>FAD Publication</h4>
+          <p>A typographic exploration of Victorian lingerie and societal ideals...</p>
+        </div>
+      </a>
+
+      <a class="item" href="summerset-signage.html">
+        <img src="work14.jpeg">
+        <div class="overlay">
+          <h4>Summerset Signage</h4>
+          <p>Outdoor print materials promoting Summerset homes and villages...</p>
+        </div>
+      </a>
+
+      <a class="item" href="studio-pacific-architecture.html">
+        <img src="work15.jpeg">
+        <div class="overlay">
+          <h4>Studio Pacific Architecture</h4>
+          <p>A book designed to reflect Studio Pacific’s natural, structured, and sustainable architecture...</p>
+        </div>
+      </a>
+
+      <a class="item" href="summerset-calendar.html">
+        <img src="work16.jpeg">
+        <div class="overlay">
+          <h4>Summerset Calendar</h4>
+          <p>Designed for Summerset Retirement Village, this calendar showcases residents, staff, and village facilities in an easy-to-read format…</p>
+        </div>
+      </a>
+
+      <a class="item" href="karma-eats.html">
+        <img src="work17.jpeg">
+        <div class="overlay">
+          <h4>Karma Eats</h4>
+          <p>A food truck brand creating healthy, feel-good meals with a vibrant, engaging visual identity...</p>
+        </div>
+      </a>
+
+      <a class="item" href="studio-pacific-architecture.html">
+        <img src="work18.jpeg">
+        <div class="overlay">
+          <h4>Studio Pacific Architecture</h4>
+          <p>A book designed to reflect Studio Pacific’s natural, structured, and sustainable architecture...</p>
+        </div>
+      </a>
+
+      <a class="item" href="karma-eats.html">
+        <img src="work19.jpeg">
+        <div class="overlay">
+          <h4>Karma Eats</h4>
+          <p>A food truck brand creating healthy, feel-good meals with a vibrant, engaging visual identity...</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <button class="arrow right" onclick="scrollCarousel(1)">→</button>
+
+</div>
+
+  <!-- Services -->
+  <div class="services">
+    <div class="service">
+      <h3>Publication & Editorial Design</h3>
+      <p>Structured, typographically-led layouts designed for clarity, engagement, and&nbsp;readability.</p>
+    </div>
+    <div class="service">
+      <h3>Digital & Web Design Systems</h3>
+      <p>Extending brand identities across digital platforms capturing attention with consistency and&nbsp;precision.</p>
+    </div>
+    <div class="service">
+      <h3>Brand Collateral & Campaign Design</h3>
+      <p>Working within established brand systems to create cohesive, high-quality print and campaign&nbsp;material.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:50px;opacity:.75;max-width:100%;font-size:18px;">
+    These are some of the core areas of my practice. I’m open to freelance or contract-based work, so if you have something specific in mind, feel free to reach out at <span style="color:var(--accent);">hello.genevieves.design@gmail.com</span> — I’d be happy to chat!
+  </p>
+</section>
+
+<section id="about" class="section get-in-touch">
+  <div class="get-in-touch-text">
+    <h2>Get in Touch</h2>
+    <p>
+      I’m Genevieve, a Canterbury-based designer with a love for all things typographic. I&nbsp;create work that feels deliberate and visually refined, for those who value clarity, consistency, and the finer&nbsp;details.
+    </p>
+    <p style="margin-top:20px;">
+     I care about how small design decisions shape the overall experience. Whether working within an established identity or developing something new, I apply design thoughtfully across print, digital, and campaigns. If you need thoughtful, detail-driven design, I’d love to hear about&nbsp;it.
+    </p>
+    <p style="margin-top:20px;">
+      Feel free to get in touch at <span style="color:var(--accent);">hello.genevieves.design@gmail.com</span>. I’ll reply as soon as I can and am looking forward to connecting with&nbsp;you.
+    </p>
+  </div>
+  <img src="me.jpeg" alt="Genevieve" class="get-in-touch-photo">
+</section>
+
+<footer>© genevieves.design</footer>
+
+</div>
+
+<script>
+const carousel = document.getElementById('carousel');
+const track = carousel.querySelector('.track');
+const items = Array.from(track.querySelectorAll('.item'));
+const gap = parseFloat(getComputedStyle(track).gap) || 20;
+
+// Duplicate items for seamless loop
+track.innerHTML += track.innerHTML;
+const totalItems = track.querySelectorAll('.item').length;
+const originalItemsCount = items.length;
+
+let isDown = false;
+let startX = 0;
+let scrollStart = 0;
+let autoScroll = true;
+const autoSpeed = 1; // pixels per frame
+
+  <!-- Auto Scroll Loop -->
+function loop() {
+    if (autoScroll && !isDown) {
+        carousel.scrollLeft += autoSpeed;
+
+        // Seamless infinite loop
+        if (carousel.scrollLeft >= track.scrollWidth / 2) {
+            carousel.scrollLeft -= track.scrollWidth / 2;
+        }
+    }
+    requestAnimationFrame(loop);
+}
+loop();
+
+  <!-- Arrows -->
+function scrollCarousel(dir) {
+    // Width of one item including gap
+    const firstItem = track.querySelector('.item');
+    const itemWidth = firstItem.offsetWidth + gap;
+
+    let target = carousel.scrollLeft + dir * itemWidth;
+
+    // Wrap around for seamless loop
+    const halfWidth = track.scrollWidth / 2;
+    if (target >= halfWidth) target -= halfWidth;
+    if (target < 0) target += halfWidth;
+
+    carousel.scrollTo({
+        left: target,
+        behavior: 'smooth'
+    });
+
+    // Temporarily stop auto-scroll while arrow animates
+    autoScroll = false;
+    setTimeout(() => autoScroll = true, 600);
+}
+
+  <!-- Mouse Drag -->
+carousel.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX;
+    scrollStart = carousel.scrollLeft;
+    autoScroll = false;
+    carousel.style.cursor = 'grabbing';
+});
+
+window.addEventListener('mouseup', () => {
+    isDown = false;
+    autoScroll = true;
+    carousel.style.cursor = 'grab';
+});
+
+carousel.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    const dx = e.pageX - startX;
+    carousel.scrollLeft = scrollStart - dx;
+
+    // Seamless dragging loop
+    if (carousel.scrollLeft >= track.scrollWidth / 2) {
+        carousel.scrollLeft -= track.scrollWidth / 2;
+        scrollStart -= track.scrollWidth / 2;
+    } else if (carousel.scrollLeft < 0) {
+        carousel.scrollLeft += track.scrollWidth / 2;
+        scrollStart += track.scrollWidth / 2;
+    }
+});
+
+  <!-- Touch Support -->
+let touchStartX = 0;
+let touchScrollStart = 0;
+
+carousel.addEventListener('touchstart', e => {
+    autoScroll = false;
+    touchStartX = e.touches[0].pageX;
+    touchScrollStart = carousel.scrollLeft;
+}, { passive: true });
+
+carousel.addEventListener('touchmove', e => {
+    const dx = e.touches[0].pageX - touchStartX;
+    carousel.scrollLeft = touchScrollStart - dx;
+
+    if (carousel.scrollLeft >= track.scrollWidth / 2) {
+        carousel.scrollLeft -= track.scrollWidth / 2;
+        touchScrollStart -= track.scrollWidth / 2;
+    } else if (carousel.scrollLeft < 0) {
+        carousel.scrollLeft += track.scrollWidth / 2;
+        touchScrollStart += track.scrollWidth / 2;
+    }
+}, { passive: true });
+
+carousel.addEventListener('touchend', () => autoScroll = true);
+
+  <!-- Fade-in Sections -->
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+
+sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>
