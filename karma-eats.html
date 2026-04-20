@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Karma Eats — genevieves.design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --text:#ffffff;
+  --accent:hsl(43,63%,62%);
+  --muted:rgba(255,255,255,0.72);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* LOGO */
+.logo{
+position:fixed;
+top:30px;
+right:30px;
+height:36px;
+opacity:0.7;
+}
+
+.logo:hover{
+opacity:1;
+}
+
+.logo{
+cursor:pointer;
+}
+
+/* BACK */
+.back{
+  position:fixed;
+  top:30px;
+  left:30px; 
+
+  font-size:12px;
+  padding:4px 8px;
+
+  color:var(--text);
+  text-decoration:none;
+  opacity:0.7;
+
+  background:rgba(10,10,10,0.5);
+  backdrop-filter:blur(6px);
+  border-radius:3px;
+}
+
+.back:visited{
+  color:var(--text);
+}
+
+.back:hover{
+  opacity:1;
+  color:var(--accent);
+}
+
+/* CONTAINER */
+.container{
+max-width:1200px;
+margin:auto;
+padding:110px 20px 40px;
+}
+
+
+/* HERO */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(70px,8vw,130px);
+  line-height:0.95;
+  margin-top:80px;
+  margin-bottom:40px;
+  letter-spacing:-1px;
+}
+
+.tagline{
+  font-size:18px;
+  line-height:1.6;
+  max-width:600px;
+  margin-bottom:28px;
+  color:var(--text);
+}
+
+.category-label{
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+.project-meta{
+  margin-bottom:60px;
+}
+
+.project-meta p{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--text);
+}
+
+.project-meta span{
+  color:var(--accent);
+  font-weight:500;
+  margin-right:6px;
+}
+
+/* META */
+.meta{
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:80px;
+}
+
+/* LAYOUT */
+.layout{
+  display:grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap:110px;
+  align-items:start;
+  margin-top:20px; 
+}
+
+/* IMAGES */
+.image-header{
+  margin-bottom:20px; 
+}
+
+.image-header,
+.text h2:first-of-type{
+  margin-top:0;
+}
+
+.category-label{
+  margin-bottom:0;
+}
+
+.images{
+  display:flex;
+  flex-direction:column;
+  gap:60px;
+  margin-top:0; 
+}
+
+.images img{
+  width:100%;
+  display:block;
+}
+
+/* TEXT */
+.text{
+position: sticky;
+top: 40px;
+align-self: start;
+}
+
+/* HEADINGS */
+.text h2{
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-top:30px;
+  margin-bottom:10px;
+}
+
+.text h2:first-of-type{
+margin-top:20px;
+}
+
+/* BODY */
+.text p{
+  font-size:15px;
+  line-height:1.85;
+  color:var(--muted);
+  margin-bottom:16px;
+  max-width:460px;
+}
+
+/* OTHER */
+.kicker{
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px; 
+}
+
+.project-nav a{
+  color:var(--accent);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  opacity:0.7;
+}
+
+.project-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:100%;
+}
+
+.project-nav a:hover{
+opacity:1;
+}
+
+.project-end{
+margin-top:120px;
+}
+
+/* FOOTER */
+.site-footer{
+max-width:1200px;
+margin:80px auto 40px;
+padding:0 20px;
+
+font-family:'Inter',sans-serif;
+font-size:11px;
+letter-spacing:1.5px;
+text-transform:uppercase;
+
+color:rgba(255,255,255,0.4);
+text-align:left;
+}
+
+.text a,
+.text a:visited {
+color: var(--accent);
+text-decoration: none;
+}
+
+.text a:hover {
+opacity: 0.8;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .container{
+    padding:120px 20px;
+  }
+
+  .back{
+    left:20px;
+    top:20px;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+
+  .text{
+    position:relative;
+    top:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a href="../index.html" class="back">← Work</a>
+
+<div class="container">
+
+<a href="../index.html">
+<img src="../logo.svg" class="logo">
+</a>
+
+<div class="kicker">Brand Identity / Food Truck / Environmental Design</div>
+
+  <h1>Karma Eats</h1>
+
+<p class="tagline">
+  A brand identity and environmental design system for a start-up food truck promoting healthy, feel-good eating.
+</p>
+
+<div class="project-meta">
+  <p><span>Role:</span> Brand Identity, Art Direction</p>
+  <p><span>Format:</span> Food Truck, Print, Social Media</p>
+  <p><span>Outcome:</span> Cohesive identity system for a start-up food truck</p>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT -->
+  <div class="images">
+
+    <img src="karmaeats1.jpeg">
+    <img src="karmaeats2.jpeg">
+    <img src="karmaeats3.jpeg">
+    <img src="karmaeats4.jpeg">
+    <img src="karmaeats5.jpeg">
+    <img src="karmaeats6.jpeg">
+
+    <div class="project-nav">
+      <a href="previous.html">← Previous</a>
+      <a href="../index.html">genevieves.design</a>
+      <a href="next.html">Next →</a>
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="text">
+
+      <h2>Overview</h2>
+      <p>Karma Eats is a start-up food truck focused on creating healthy food that feels good to eat. The brand was developed to communicate freshness, simplicity, and a positive relationship with everyday food choices. The identity extends across the truck, marketing material, and supporting brand&nbsp;assets.
+</p>
+
+      <h2>Context</h2>
+      <p>The food truck operates within a growing wellness-focused food culture, where customers are increasingly looking for convenient meals that still feel nourishing and intentional. The challenge was to create a brand that felt approachable and energetic, without relying on overly clinical or restrictive “health food”&nbsp;aesthetics.
+</p>
+
+      <h2>Approach</h2>
+      <p>The identity uses a light, optimistic visual system that reflects freshness and ease. Typography and colour choices were kept simple and expressive, allowing the food and messaging to remain central. The system was designed to scale across both physical applications (the truck exterior) and everyday marketing touchpoints such as social media and printed&nbsp;material.
+</p>
+
+      <h2>Outcome</h2>
+      <p>The final identity creates a cohesive presence across the food truck and its supporting communications. It positions Karma Eats as a friendly, accessible brand that encourages a positive and uncomplicated approach to healthy&nbsp;eating.
+</p>
+
+<p style="margin-top:30px; color:var(--accent);">
+  Interested in working together? Contact me at <a href="mailto:hello.genevieves.design@gmail.com">
+hello.genevieves.design@gmail.com
+</a>
+</p>
+
+</div> 
+
+</div> 
+
+<!-- GLOBAL FOOTER -->
+<footer class="site-footer">© genevieves.design</footer>
+
+<script src="projects-nav.js"></script>
+
+</body>
+</html>
