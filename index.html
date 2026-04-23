@@ -530,10 +530,8 @@ footer{
     </div>
   </div>
 
-  <p style="margin-top:50px;opacity:.75;max-width:100%;font-size:18px;">
-    <p style="margin-top:50px;opacity:.75;max-width:100%;font-size:18px;">
-  If you’re looking for considered, detail-driven design, I’m currently available for freelance and contract projects. Feel free to get in touch at <span style="color:var(--accent);">hello.genevieves.design@gmail.com</span> — I’d love to hear what you’re working on.
-</p>
+<p style="margin-top:50px;opacity:.75;max-width:100%;font-size:18px;">
+  If you’re looking for considered, detail-driven design, I’m currently available for freelance and contract projects. Feel free to get in touch at <a href="mailto:hello.genevieves.design@gmail.com" style="color:var(--accent);">hello.genevieves.design@gmail.com</a> — I’d love to hear what you’re working on.
   </p>
 </section>
 
@@ -547,7 +545,7 @@ footer{
      I care about how small design decisions shape the overall experience. Whether working within an established identity or developing something new, I apply design thoughtfully across print, digital, and campaigns. If you need thoughtful, detail-driven design, I’d love to hear about&nbsp;it.
     </p>
     <p style="margin-top:20px;">
-      Feel free to get in touch at <span style="color:var(--accent);">hello.genevieves.design@gmail.com</span>. I’ll reply as soon as I can and am looking forward to connecting with&nbsp;you.
+      Feel free to get in touch at <a href="mailto:hello.genevieves.design@gmail.com" style="color:var(--accent);">hello.genevieves.design@gmail.com</a>. I’ll reply as soon as I can and am looking forward to connecting with&nbsp;you.
     </p>
   </div>
   <img src="me.jpeg" alt="Genevieve" class="get-in-touch-photo">
@@ -675,6 +673,18 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 sections.forEach(section => observer.observe(section));
+
+// TRACKING
+
+  //email
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'contact_click', {
+      method: 'email'
+    });
+  });
+});
+
 </script>
 
 </body>
